@@ -11,7 +11,6 @@ export default function Footer() {
 
   const quickLinks = [
     { name: t.nav.home, path: "/" },
-    { name: t.nav.about, path: "/about" },
     { name: t.nav.goals, path: "/about" },
     { name: t.nav.events, path: "/services" },
     { name: t.nav.sharings, path: "/sharings" },

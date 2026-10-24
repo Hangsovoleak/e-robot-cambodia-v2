@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Satellite, ArrowRight, Compass, Users, Sparkles, Rocket, Award, Globe, GraduationCap } from 'lucide-react';
+import { Satellite, ArrowRight, Compass, Users, HeartHandshake, Rocket, Award, Globe, GraduationCap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 import Image1 from '../assets/ImageBackground.png';
@@ -16,7 +16,7 @@ export default function AboutUs() {
     const stepIcons = [
         <Compass key="1" className="w-4 h-4 text-white" />,
         <Users key="2" className="w-4 h-4 text-white" />,
-        <Sparkles key="3" className="w-4 h-4 text-white" />
+        <HeartHandshake key="3" className="w-4 h-4 text-white" />
     ];
 
     return (
@@ -56,7 +56,7 @@ export default function AboutUs() {
                             {/* CTA Action Buttons */}
                             <div className="pt-2 flex flex-wrap items-center gap-4">
                                 <Link
-                                    to="/goals"
+                                    to="/about"
                                     className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-[#192048] hover:bg-[#192048]/90 px-7 py-3.5 text-xs sm:text-sm font-bold text-white shadow-none transition-all duration-200 active:scale-95 no-underline"
                                 >
                                     <span>{t.aboutUs.heroGoalBtn}</span>
@@ -64,7 +64,7 @@ export default function AboutUs() {
                                 </Link>
                                 
                                 <Link
-                                    to="/events"
+                                    to="/services"
                                     className="inline-flex items-center justify-center gap-2 rounded-sm bg-white hover:bg-slate-100 border border-slate-300 px-6 py-3.5 text-xs sm:text-sm font-bold text-[#192048] shadow-none transition-all duration-200 hover:border-[#192048] no-underline"
                                 >
                                     <Rocket className="h-4 w-4 text-[#FF383C]" />
@@ -79,7 +79,7 @@ export default function AboutUs() {
                             <div className="relative w-full max-w-lg rounded-sm overflow-hidden border border-slate-200 bg-white p-3 shadow-none">
                                 <img
                                     src={Image1}
-                                    alt="E-Robot Education Hero"
+                                    alt="E-Robot Cambodia students learning robotics"
                                     className="w-full h-80 sm:h-96 object-cover rounded-sm"
                                 />
                             </div>
@@ -126,9 +126,11 @@ export default function AboutUs() {
                         <div className="p-5 bg-[#192048] text-white rounded-sm shadow-none">
                             <div className="flex items-center justify-center gap-2 text-[#FF383C] mb-1">
                                 <Award className="w-5 h-5" />
-                                <span className="text-2xl sm:text-3xl font-extrabold text-white">100%</span>
+                                <span className="text-2xl sm:text-3xl font-extrabold text-white">
+                                    {language === "km" ? "២០១៨" : "2018"}
+                                </span>
                             </div>
-                            <p className="text-xs font-bold text-slate-200">{t.aboutUs.stats.commitment}</p>
+                            <p className="text-xs font-bold text-slate-200">{t.aboutUs.stats.founded}</p>
                         </div>
                     </div>
                 </div>

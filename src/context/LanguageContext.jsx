@@ -38,36 +38,36 @@ export const translations = {
 
     // About Us Page
     aboutUs: {
-      badgeTop: "ឧត្តមភាពក្នុងការអប់រំបច្ចេកវិទ្យា",
+      badgeTop: "អង្គការមិនរកប្រាក់ចំណេញដឹកនាំដោយនិស្សិត · តាំងពីឆ្នាំ ២០១៨",
       heroGoalBtn: "មើលគោលដៅរបស់យើង",
       heroActBtn: "សកម្មភាពរបស់យើង",
-      heroMission: "ការចូលរួមអភិវឌ្ឍន៍សង្គម គឺជាការរៀបចំអនាគតសម្រាប់មនុស្សជំនាន់ក្រោយ។ យើងជឿជាក់ថា ការអប់រំគឺជាគន្លងដ៏សំខាន់ក្នុងការបង្កើតសង្គមដែលមានការរីកចម្រើន និងនវានុវត្តន៍។",
+      heroMission: "E-Robot គឺជាអង្គការមិនរកប្រាក់ចំណេញ ដែលដឹកនាំដោយនិស្សិត បង្កើតឡើងក្នុងឆ្នាំ ២០១៨ ក្រោមចក្ខុវិស័យ «កសាងឧត្តមភាពនៃកម្ពុជា ក្នុងវិស័យនៃបច្ចេកវិទ្យា»។",
 
       badge1: "តើពួកយើងជានរណា?",
-      title1: "ស្វែងយល់អំពីពួកយើង",
-      desc1: "ពួកយើងធ្វើអ្វីដែលសិស្សានុសិស្សគួរដឹង គួររៀន និងគួរស្វែងយល់។ យើងគឺជាក្រុមការងារដែលអាចផ្លាស់ប្តូរជីវិត និងជួយឱ្យពួកគេរីកចម្រើនតាមរយៈទេពកោសល្យរៀងៗខ្លួនក្នុងវិស័យបច្ចេកវិទ្យា។",
+      title1: "អំពី E-Robot Cambodia",
+      desc1: "បេសកកម្មរបស់យើងគឺកាត់បន្ថយគម្លាតនៃការអប់រំ STEM នៅកម្ពុជា ពង្រឹងសមត្ថភាពយុវជនលើចំណេះដឹងឌីជីថល រ៉ូបូទិក និងជំនាញបច្ចេកវិទ្យាទំនើប ព្រមទាំងបង្កើតដំណោះស្រាយបច្ចេកវិទ្យាដែលមានឥទ្ធិពលសម្រាប់ការអភិវឌ្ឍសង្គម។",
       
       stats: {
         students: "សិស្សានុសិស្សបានចូលរួម",
         missions: "បេសកកម្មសិក្សា",
         provinces: "ខេត្ត-ក្រុងទូទាំងកម្ពុជា",
-        commitment: "ការប្តេជ្ញាចិត្តដើម្បីសង្គម",
+        founded: "ឆ្នាំបង្កើតអង្គការ",
       },
 
       cardList: [
-        { title: "បេសកកម្ម", desc: "ការលើកកម្ពស់ការអប់រំបច្ចេកវិទ្យានៅតាមបណ្តាខេត្ត និងសហគមន៍ដាច់ស្រយាលក្នុងប្រទេសកម្ពុជា។" },
-        { title: "ចក្ខុវិស័យ", desc: "បង្កើតសហគមន៍យុវជនបច្ចេកវិទ្យាដ៏រឹងមាំ និងមានសមត្ថភាពច្នៃប្រឌិតខ្ពស់សម្រាប់អនាគត។" },
-        { title: "តម្លៃស្នូល", desc: "ការចែករំលែក ភាពច្នៃប្រឌិត និងការទទួលខុសត្រូវខ្ពស់ចំពោះការអភិវឌ្ឍសង្គមជាតិ។" },
+        { title: "បេសកកម្ម", desc: "កាត់បន្ថយគម្លាតនៃការអប់រំ STEM នៅកម្ពុជា តាមរយៈការពង្រឹងចំណេះដឹងឌីជីថល រ៉ូបូទិក និងជំនាញបច្ចេកវិទ្យាទំនើបដល់យុវជន។" },
+        { title: "ចក្ខុវិស័យ", desc: "កសាងឧត្តមភាពនៃកម្ពុជា ក្នុងវិស័យនៃបច្ចេកវិទ្យា។" },
+        { title: "តម្លៃស្នូល", desc: "ការចែករំលែក ភាពច្នៃប្រឌិត និងការបង្កើតដំណោះស្រាយបច្ចេកវិទ្យាដែលមានឥទ្ធិពលសម្រាប់ការអភិវឌ្ឍសង្គម។" },
       ],
 
       badge2: "វិធីសាស្ត្រសិក្សា",
       title2: "តើអ្នកអាចស្គាល់ពួកយើងតាមរបៀបណា?",
-      desc2: "E-ROBOT គឺជាអ្នកត្រួសត្រាយផ្លូវនៃវិថីអប់រំថ្មីក្នុងវិស័យបច្ចេកវិទ្យា និងសហគ្រិនភាព ដែលតភ្ជាប់សិស្សានុសិស្សទៅកាន់សក្តានុពលដ៏ល្អបំផុតសម្រាប់ថ្ងៃអនាគតរបស់ពួកគេ។",
+      desc2: "E-ROBOT ភ្ជាប់យុវជនទៅកាន់សហគមន៍ តាមរយៈការចែករំលែកការអប់រំ ដើម្បីជួយសិស្សានុសិស្សឈានទៅរកសក្តានុពលដ៏ល្អបំផុតសម្រាប់ថ្ងៃអនាគតរបស់ពួកគេ។",
       
       steps: [
         { title: "ការកសាងមូលដ្ឋានគ្រឹះ", desc: "គោលការណ៍បច្ចេកវិទ្យាសំខាន់ៗ និងចំណេះដឹងឌីជីថលទូទៅ។" },
         { title: "ការអភិវឌ្ឍជំនាញ", desc: "ការរៀនតាមរយៈការអនុវត្តផ្ទាល់លើការសរសេរកម្មវិធី និងការធ្វើគម្រោងជាក់ស្តែង។" },
-        { title: "នវានុវត្តន៍ និងសហគ្រិនភាព", desc: "ការបណ្តុះការគិតបែបច្នៃប្រឌិត និងការអភិវឌ្ឍជំនាញធុរកិច្ចឌីជីថល។" },
+        { title: "ភ្ជាប់យុវជនទៅកាន់សហគមន៍", desc: "ការចែករំលែកចំណេះដឹង និងការអប់រំ ដើម្បីភ្ជាប់យុវជនជាមួយសហគមន៍របស់ពួកគេ។" },
       ],
 
       whyTitle: "ហេតុអ្វីត្រូវជ្រើសរើស E-ROBOT?",
@@ -102,7 +102,7 @@ export const translations = {
         { desc: "ទទួលបានការបណ្តុះបណ្តាលពីយុវជន ស្ម័គ្រចិត្តដែលមានជំនាញ" },
       ],
 
-      bannerBadge: "ការច្នៃប្រឌិត & ការអភិវឌ្ឍ",
+      bannerBadge: "ការអប់រំ & សហគមន៍",
       bannerTitle: "រួមគ្នាបង្កើតអនាគតឌីជីថលដ៏ភ្លឺស្វាងសម្រាប់កុមារគ្រប់រូប",
 
       badge2: "តម្លៃ និងការប្តេជ្ញាចិត្ត",
@@ -212,7 +212,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: "ការចូលរួមអភិវឌ្ឍន៍សង្គម គឺជាការរៀបចំអនាគតសម្រាប់មនុស្សជំនាន់ក្រោយ។ យើងជឿជាក់ថា ការអប់រំគឺជាគន្លងដ៏សំខាន់ក្នុងការបង្កើតសង្គមដែលមានការរីកចម្រើន និងនវានុវត្តន៍។",
+      tagline: "អង្គការមិនរកប្រាក់ចំណេញដឹកនាំដោយនិស្សិត បង្កើតឡើងក្នុងឆ្នាំ ២០១៨ ដើម្បីកសាងឧត្តមភាពនៃកម្ពុជា ក្នុងវិស័យនៃបច្ចេកវិទ្យា។",
       quickLinks: "ព័ត៌មានទូទៅ",
       programs: "កម្មវិធី & វគ្គសិក្សា",
       contact: "ទំនាក់ទំនង",
@@ -284,36 +284,36 @@ export const translations = {
 
     // About Us Page
     aboutUs: {
-      badgeTop: "Excellence in Tech Education",
+      badgeTop: "Student-Led Non-Profit · Since 2018",
       heroGoalBtn: "Explore Our Goals",
       heroActBtn: "Our Activities",
-      heroMission: "Engaging in social development shapes the future for generations to come. We believe education is the key path to creating a thriving and innovative society.",
+      heroMission: "E-Robot is a student-led non-profit organization established in 2018 with a vision to build excellence in Cambodia's technology sector.",
 
       badge1: "WHO ARE WE?",
-      title1: "Learn About Us",
-      desc1: "We create what students should know, learn, and explore. We are a dedicated team transforming lives and empowering youth through their unique talents in technology.",
+      title1: "About E-Robot Cambodia",
+      desc1: "Our mission is to bridge the STEM education gap in Cambodia, empower youth with digital literacy, robotics, and modern technology skills, and build impactful technological solutions for social development.",
       
       stats: {
         students: "Students Participated",
         missions: "Educational Missions",
         provinces: "Provinces Across Cambodia",
-        commitment: "Commitment to Society",
+        founded: "Year Founded",
       },
 
       cardList: [
-        { title: "Mission", desc: "Promoting technology education across provinces and remote communities in Cambodia." },
-        { title: "Vision", desc: "Building a strong youth technology community empowered with innovation for the future." },
-        { title: "Core Values", desc: "Sharing, creativity, and high responsibility toward national social development." },
+        { title: "Mission", desc: "Bridging the STEM education gap in Cambodia by empowering youth with digital literacy, robotics, and modern technology skills." },
+        { title: "Vision", desc: "Building excellence in Cambodia's technology sector." },
+        { title: "Core Values", desc: "Sharing, creativity, and building impactful technological solutions for social development." },
       ],
 
       badge2: "LEARNING METHODOLOGY",
       title2: "How Can You Get to Know Us?",
-      desc2: "E-ROBOT is a pioneer in a new educational journey in technology and entrepreneurship, connecting students to their best potential for the future.",
+      desc2: "E-ROBOT connects youth to their communities through education sharing, helping students reach their best potential for the future.",
       
       steps: [
         { title: "Building Foundations", desc: "Essential tech principles and general digital literacy." },
         { title: "Skill Development", desc: "Hands-on learning through coding practice and real projects." },
-        { title: "Innovation & Entrepreneurship", desc: "Fostering creative thinking and digital business skills." },
+        { title: "Connecting Youth to Community", desc: "Sharing knowledge and education to connect youth with their communities." },
       ],
 
       whyTitle: "Why Choose E-ROBOT?",
@@ -339,7 +339,7 @@ export const translations = {
         { id: 1, title: "Empowering Cambodian children to learn and explore technology deeply" },
         { id: 2, title: "Helping students discover their true passion and core talents" },
         { id: 3, title: "Bridging the digital divide between rural and urban students" },
-        { id: 4, title: "Fostering a passion for lifelong learning and tech innovation" },
+        { id: 4, title: "Fostering a passion for lifelong learning and exploring technology" },
       ],
 
       gridCards: [
@@ -348,7 +348,7 @@ export const translations = {
         { desc: "Receive hands-on training from skilled youth volunteers" },
       ],
 
-      bannerBadge: "INNOVATION & DEVELOPMENT",
+      bannerBadge: "EDUCATION & COMMUNITY",
       bannerTitle: "Together Creating a Bright Digital Future for Every Child",
 
       badge2: "VALUES & COMMITMENT",
@@ -458,7 +458,7 @@ export const translations = {
 
     // Footer
     footer: {
-      tagline: "Engaging in social development shapes the future for generations to come. We believe education is the key path to creating a thriving and innovative society.",
+      tagline: "A student-led non-profit organization established in 2018, building excellence in Cambodia's technology sector.",
       quickLinks: "General Links",
       programs: "Programs & Courses",
       contact: "Contact Info",
@@ -503,6 +503,7 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("erobot_lang", language);
+    document.documentElement.lang = language;
   }, [language]);
 
   const toggleLanguage = () => {
