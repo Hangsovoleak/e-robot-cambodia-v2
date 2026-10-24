@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Mail, Lock, User, UserPlus, AlertCircle, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import ERobotLogo from "../assets/ERobot.png";
+import ERobotLogo from "../assets/logo-horizontal.png";
 
 export default function SignUp() {
   const { t } = useLanguage();
@@ -82,8 +82,8 @@ export default function SignUp() {
           <Link to="/">
             <img 
               src={ERobotLogo} 
-              alt="E-Robot Logo" 
-              className="w-16 h-16 rounded-full border border-[#192048]/20 mb-3" 
+              alt="E-Robot Cambodia" 
+              className="h-14 w-auto mb-4" 
             />
           </Link>
           <h1 className="text-2xl font-black text-[#192048]">{t.auth.signUpTitle}</h1>

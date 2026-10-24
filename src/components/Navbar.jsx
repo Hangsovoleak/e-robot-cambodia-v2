@@ -8,7 +8,7 @@ import { db } from "../firebase";
 import AuthModal from "./AuthModal";
 import { Globe } from "lucide-react";
 
-import ERobotLogo from "../assets/ERobot.png";
+import ERobotLogo from "../assets/logo-compact.png";
 import DonationQR from "../assets/QR.jpg"; 
 import TelegramQR from "../assets/telegram_bong_kosal.png";
 
@@ -106,19 +106,11 @@ export default function Navbar() {
             onClick={closeAll} 
             className="flex items-center gap-3 shrink-0 focus:outline-none"
           >
-            <img 
-              src={ERobotLogo} 
-              alt="E-Robot Cambodia" 
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-[#192048]/20 shadow-none" 
+            <img
+              src={ERobotLogo}
+              alt="E-Robot Cambodia"
+              className="h-9 sm:h-11 w-auto"
             />
-            <div className="flex flex-col">
-              <span className="font-bold text-[#192048] tracking-tight text-base sm:text-lg leading-tight">
-                E-ROBOT
-              </span>
-              <span className="text-[10px] font-semibold text-[#192048]/60 tracking-wider uppercase hidden sm:block">
-                CAMBODIA
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Nav Links */}

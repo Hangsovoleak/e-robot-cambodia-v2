@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Send, Globe } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import ERobotLogo from "../assets/ERobot.png";
+import ERobotLogo from "../assets/logo-horizontal-white.png";
 import facebookIcon from "../assets/facebook.png";
 import instagramIcon from "../assets/instagram.png";
 
@@ -32,23 +32,13 @@ export default function Footer() {
           
           {/* Column 1: Brand Info (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <Link to="/" className="shrink-0 flex items-center">
-                <img
-                  src={ERobotLogo}
-                  alt="E-Robot Logo"
-                  className="w-12 h-12 rounded-full object-cover border border-white/20"
-                />
-              </Link>
-              <div>
-                <span className="text-xl sm:text-2xl font-black tracking-tight text-white block">
-                  E - ROBOT
-                </span>
-                <span className="text-[11px] font-bold text-[#FF383C] uppercase tracking-wider block">
-                  Education & Technology
-                </span>
-              </div>
-            </div>
+            <Link to="/" className="inline-block">
+              <img
+                src={ERobotLogo}
+                alt="E-Robot Cambodia"
+                className="w-full max-w-[300px] h-auto"
+              />
+            </Link>
 
             <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed max-w-sm m-0">
               {t.footer.tagline}
