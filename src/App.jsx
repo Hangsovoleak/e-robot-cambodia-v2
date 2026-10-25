@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 
 import './index.css';
@@ -12,8 +11,6 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const Goals = lazy(() => import('./pages/Goals'));
 const Events = lazy(() => import('./pages/Events'));
 const Sharings = lazy(() => import('./pages/Sharing'));
-const Login = lazy(() => import('./pages/Login'));
-const SignUp = lazy(() => import('./pages/SignUp'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -30,8 +27,7 @@ function App() {
 
   return (
     <LanguageProvider>
-      <AuthProvider>
-        <div className="min-h-screen bg-[#F7F7F7] w-full flex flex-col font-kantumruy text-[#192048] antialiased">
+      <div className="min-h-screen bg-[#F7F7F7] w-full flex flex-col font-kantumruy text-[#192048] antialiased">
         <ScrollToTop />
         <Navbar />
 
@@ -50,8 +46,6 @@ function App() {
                 <Route path="/about" element={<Goals />} />
                 <Route path="/services" element={<Events />} />
                 <Route path="/sharings" element={<Sharings />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
                 <Route path="*" element={<AboutUs />} />
               </Routes>
             </Suspense>
@@ -60,7 +54,6 @@ function App() {
 
         <Footer />
       </div>
-      </AuthProvider>
     </LanguageProvider>
   );
 }

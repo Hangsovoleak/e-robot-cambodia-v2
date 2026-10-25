@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Menu, X, QrCode, LogIn, LogOut, Heart, CheckCircle2, ChevronDown, MessageCircle } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X, QrCode, Heart, CheckCircle2, MessageCircle } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
-import AuthModal from "./AuthModal";
 import { Globe } from "lucide-react";
 
 import ERobotLogo from "../assets/logo-compact.png";
@@ -16,26 +14,13 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [donationModalOpen, setDonationModalOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authTab, setAuthTab] = useState("login"); // "login" | "signup"
-  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  const [avatarError, setAvatarError] = useState(false);
-  const [prevPhotoURL, setPrevPhotoURL] = useState(null);
 
   // Donation state
   const [donateAmount, setDonateAmount] = useState("");
   const [donateSuccess, setDonateSuccess] = useState(false);
   const [donating, setDonating] = useState(false);
 
-  const { currentUser, logout } = useAuth();
   const { language, toggleLanguage, t } = useLanguage();
-  const navigate = useNavigate();
-
-  // Reset avatar error state when user photo changes
-  if (currentUser?.photoURL !== prevPhotoURL) {
-    setPrevPhotoURL(currentUser?.photoURL);
-    setAvatarError(false);
-  }
 
   const NAV_ITEMS = [
     { to: "/", label: t.nav.home },
@@ -44,15 +29,11 @@ export default function Navbar() {
     { to: "/sharings", label: t.nav.sharings },
   ];
 
-  const dropdownRef = useRef(null);
   const donationPanelRef = useRef(null);
 
   // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setUserDropdownOpen(false);
-      }
       if (donationPanelRef.current && !donationPanelRef.current.contains(event.target)) {
         setDonationModalOpen(false);
       }
@@ -63,24 +44,14 @@ export default function Navbar() {
 
   const closeAll = () => {
     setMobileMenuOpen(false);
-    setUserDropdownOpen(false);
     setDonationModalOpen(false);
     setContactModalOpen(false);
-  };
-
-  const handleOpenAuth = (tab = "login") => {
-    setAuthTab(tab);
-    setAuthModalOpen(true);
-    closeAll();
   };
 
   const handleConfirmDonation = async () => {
     try {
       setDonating(true);
       await addDoc(collection(db, "donations"), {
-        userId: currentUser ? currentUser.uid : null,
-        userName: currentUser ? (currentUser.displayName || "អនាមិក") : "អ្នកឧបត្ថម្ភ",
-        userEmail: currentUser ? currentUser.email : "anonymous@erobot.org",
         amount: donateAmount || "តាមទឹកចិត្ត",
         paymentMethod: "ABA Pay QR",
         status: "completed",
@@ -152,7 +123,6 @@ export default function Navbar() {
               onClick={() => {
                 setContactModalOpen(true);
                 setDonationModalOpen(false);
-                setUserDropdownOpen(false);
               }}
               className="px-3.5 py-2 rounded-sm text-xs font-bold bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
             >
@@ -166,89 +136,12 @@ export default function Navbar() {
                 setDonateSuccess(false);
                 setDonationModalOpen(!donationModalOpen);
                 setContactModalOpen(false);
-                setUserDropdownOpen(false);
               }}
               className="px-3.5 py-2 rounded-sm text-xs font-bold bg-[#FF383C] hover:bg-[#e02d31] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
             >
               <Heart className="w-3.5 h-3.5 fill-white text-white" />
               <span>{t.nav.donate}</span>
             </button>
-
-            {/* Authenticated User Profile in Navbar */}
-            {currentUser ? (
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-2 rounded-sm bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none"
-                >
-                  {currentUser.photoURL && !avatarError ? (
-                    <img
-                      src={currentUser.photoURL}
-                      alt=""
-                      onError={() => setAvatarError(true)}
-                      className="w-5 h-5 rounded-full object-cover shrink-0"
-                    />
-                  ) : (
-                    <div className="w-5 h-5 rounded-full bg-[#FF383C] text-white font-bold flex items-center justify-center text-[10px] shrink-0">
-                      {(currentUser.displayName || currentUser.email || "U")[0].toUpperCase()}
-                    </div>
-                  )}
-                  <span className="text-xs font-bold max-w-[100px] truncate text-white">
-                    {currentUser.displayName || t.nav.account}
-                  </span>
-                  <ChevronDown className={`w-3.5 h-3.5 text-white/80 shrink-0 transition-transform ${userDropdownOpen ? "rotate-180" : ""}`} />
-                </button>
-
-                {/* Profile Card Dropdown */}
-                {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white border border-[#192048]/15 rounded-sm p-3.5 shadow-none z-50">
-                    
-                    {/* Header Info */}
-                    <div className="flex items-center gap-3 pb-3 border-b border-[#192048]/10">
-                      {currentUser.photoURL && !avatarError ? (
-                        <img
-                          src={currentUser.photoURL}
-                          alt=""
-                          onError={() => setAvatarError(true)}
-                          className="w-10 h-10 rounded-full object-cover border border-[#192048]/20 shrink-0"
-                        />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full bg-[#192048] text-white font-extrabold flex items-center justify-center text-xs shadow-none shrink-0">
-                          {(currentUser.displayName || currentUser.email || "U")[0].toUpperCase()}
-                        </div>
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-extrabold text-[#192048] truncate m-0">
-                          {currentUser.displayName || "E-Robot Member"}
-                        </p>
-                        <p className="text-[11px] text-[#192048]/60 truncate mt-0.5 m-0 font-medium">
-                          {currentUser.email}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Logout Action */}
-                    <button
-                      onClick={() => { setUserDropdownOpen(false); logout(); navigate("/"); }}
-                      className="w-full mt-3 py-2 px-3 bg-[#FF383C] hover:bg-[#e02d31] text-white rounded-sm text-xs font-bold transition-colors flex items-center justify-center gap-2 cursor-pointer border-none shadow-none"
-                    >
-                      <LogOut className="w-4 h-4 text-white shrink-0" />
-                      <span>{t.nav.logout}</span>
-                    </button>
-
-                  </div>
-                )}
-              </div>
-            ) : (
-              /* Single Login Button for Unauthenticated User */
-              <button
-                onClick={() => handleOpenAuth("login")}
-                className="px-5 py-2 rounded-sm text-xs sm:text-sm font-bold bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
-              >
-                <LogIn className="w-4 h-4 shrink-0" />
-                <span>{t.nav.login}</span>
-              </button>
-            )}
           </div>
 
           {/* Mobile Toggle Button */}
@@ -266,38 +159,6 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-[#192048]/15 bg-[#F7F7F7] px-4 py-5 space-y-4 shadow-none animate-in fade-in slide-in-from-top-2 duration-200">
             
-            {/* Authenticated User Banner Card */}
-            {currentUser && (
-              <div className="p-3.5 bg-white border border-[#192048]/10 rounded-sm flex items-center justify-between shadow-none">
-                <div className="flex items-center gap-3 min-w-0">
-                  {currentUser.photoURL && !avatarError ? (
-                    <img
-                      src={currentUser.photoURL}
-                      alt=""
-                      onError={() => setAvatarError(true)}
-                      className="w-9 h-9 rounded-full object-cover border border-[#192048]/20 shrink-0"
-                    />
-                  ) : (
-                    <div className="w-9 h-9 rounded-full bg-[#192048] text-white font-black flex items-center justify-center text-xs shrink-0">
-                      {(currentUser.displayName || currentUser.email || "U")[0].toUpperCase()}
-                    </div>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-extrabold text-[#192048] m-0 truncate">{currentUser.displayName || "Member"}</p>
-                    <p className="text-[11px] text-[#192048]/60 m-0 truncate font-medium">{currentUser.email}</p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => { closeAll(); logout(); navigate("/"); }}
-                  className="px-2.5 py-1.5 bg-red-50 text-[#FF383C] hover:bg-red-100 rounded-sm text-[11px] font-bold border border-red-200 transition-colors shrink-0 flex items-center gap-1 cursor-pointer shadow-none"
-                >
-                  <LogOut className="w-3.5 h-3.5" />
-                  <span>{t.nav.logout}</span>
-                </button>
-              </div>
-            )}
-
             {/* Mobile Nav Links with Touch-friendly styling */}
             <div className="flex flex-col gap-1.5">
               {NAV_ITEMS.map((item) => (
@@ -353,16 +214,6 @@ export default function Navbar() {
                 <span className="truncate">{t.nav.donate}</span>
               </button>
             </div>
-
-            {!currentUser && (
-              <button 
-                onClick={() => handleOpenAuth("login")} 
-                className="w-full py-3 bg-[#192048] hover:bg-[#232b57] text-white text-xs sm:text-sm font-extrabold rounded-sm flex items-center justify-center gap-2 cursor-pointer border-none shadow-none transition-colors"
-              >
-                <LogIn className="w-4 h-4 shrink-0" />
-                <span>{t.nav.login}</span>
-              </button>
-            )}
 
           </div>
         )}
@@ -476,13 +327,6 @@ export default function Navbar() {
         )}
 
       </header>
-
-      {/* Auth Modal */}
-      <AuthModal
-        isOpen={authModalOpen}
-        onClose={() => setAuthModalOpen(false)}
-        initialTab={authTab}
-      />
     </>
   );
 }

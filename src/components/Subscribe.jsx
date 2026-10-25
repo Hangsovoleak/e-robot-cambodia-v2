@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 import { CheckCircle2, AlertCircle, Send } from "lucide-react";
 
@@ -10,14 +9,13 @@ export default function Subscribe() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
-  const { currentUser } = useAuth();
   const { t } = useLanguage();
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setMessage(null);
 
-    const inputEmail = email.trim() || (currentUser ? currentUser.email : "");
+    const inputEmail = email.trim();
 
     if (!inputEmail) {
       setMessage({ type: "error", text: t.subscribe.error });
@@ -39,8 +37,6 @@ export default function Subscribe() {
 
       await addDoc(subRef, {
         email: inputEmail,
-        userId: currentUser ? currentUser.uid : null,
-        userName: currentUser ? (currentUser.displayName || "") : null,
         subscribedAt: serverTimestamp(),
         source: "website_footer"
       });
@@ -87,7 +83,7 @@ export default function Subscribe() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder={currentUser ? `Email: ${currentUser.email}` : t.subscribe.placeholder}
+            placeholder={t.subscribe.placeholder}
             className="w-full h-11 px-4 rounded-sm text-[#192048] text-xs sm:text-sm bg-white border border-white shadow-none focus:outline-none"
           />
 
