@@ -54,6 +54,12 @@ export const translations = {
         founded: "ឆ្នាំបង្កើតអង្គការ",
       },
 
+      map: {
+        title: "ផែនទីបេសកកម្មរបស់យើង",
+        legend: "ខេត្តដែលយើងបានចុះបេសកកម្ម",
+        mission: "បេសកកម្ម E-Robot",
+      },
+
       cardList: [
         { title: "បេសកកម្ម", desc: "កាត់បន្ថយគម្លាតនៃការអប់រំ STEM នៅកម្ពុជា តាមរយៈការពង្រឹងចំណេះដឹងឌីជីថល រ៉ូបូទិក និងជំនាញបច្ចេកវិទ្យាទំនើបដល់យុវជន" },
         { title: "ចក្ខុវិស័យ", desc: "កសាងឧត្តមភាពនៃកម្ពុជា ក្នុងវិស័យនៃបច្ចេកវិទ្យា" },
@@ -298,6 +304,12 @@ export const translations = {
         missions: "Educational Missions",
         provinces: "Provinces Across Cambodia",
         founded: "Year Founded",
+      },
+
+      map: {
+        title: "Our Mission Map",
+        legend: "Provinces we've reached",
+        mission: "E-Robot mission",
       },
 
       cardList: [

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Satellite, ArrowRight, Compass, Users, HeartHandshake, Rocket, Award, Globe, GraduationCap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-import Image1 from '../assets/ImageBackground.png';
 import Image2 from '../assets/image2.png';
+import ImpactMap from '../components/ImpactMap';
 import CardList from '../components/cardList';
 import Folder from '../components/Folder';
 import GridSection from '../components/GreidSection'; 
@@ -23,12 +23,13 @@ export default function AboutUs() {
         <div className="min-h-screen bg-[#F7F7F7] w-full overflow-x-hidden antialiased">
 
             {/* Handcrafted Human-Designed Hero Section */}
-            <section className="w-full bg-[#F7F7F7] py-12 sm:py-16 md:py-20 border-b border-slate-200 relative">
-                <div className="container mx-auto px-4 sm:px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                        
+            {/* Full-screen hero: the map fills the section, text floats over its left side on desktop */}
+            <section className="relative w-full overflow-hidden border-b border-slate-200 bg-gradient-to-br from-[#F7F7F7] via-[#F7F7F7] to-[#e9edf6] lg:min-h-[calc(100svh-69px)]">
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-12 sm:pt-16 lg:py-16 lg:min-h-[calc(100svh-69px)] flex items-center pointer-events-none">
+                    <div className="w-full lg:w-[44%] xl:w-[42%] pointer-events-auto">
+
                         {/* Hero Text Content Area */}
-                        <div className="lg:col-span-7 flex flex-col items-start text-left space-y-5">
+                        <div className="flex flex-col items-start text-left space-y-5">
                             
                             {/* Category Tag Badge */}
                             <div className="inline-flex items-center gap-2 rounded-full border border-[#192048]/20 bg-[#192048]/10 px-4 py-1.5 shadow-none">
@@ -74,19 +75,10 @@ export default function AboutUs() {
 
                         </div>
 
-                        {/* Hero Graphic Frame Area */}
-                        <div className="lg:col-span-5 relative w-full flex justify-center">
-                            <div className="relative w-full max-w-lg rounded-sm overflow-hidden border border-slate-200 bg-white p-3 shadow-none">
-                                <img
-                                    src={Image1}
-                                    alt="E-Robot Cambodia students learning robotics"
-                                    className="w-full h-80 sm:h-96 object-cover rounded-sm"
-                                />
-                            </div>
-                        </div>
-
                     </div>
                 </div>
+
+                <ImpactMap />
             </section>
 
             {/* Impact Statistics Ribbon */}
