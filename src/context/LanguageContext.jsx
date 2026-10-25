@@ -12,7 +12,7 @@ export const translations = {
       events: "សកម្មភាព",
       sharings: "ការចែករំលែក",
       contact: "ទំនាក់ទំនង",
-      donate: "ឧបត្ថម្ភពួកយើង",
+      contribute: "ចូលរួមចំណែក",
       close: "បិទ",
     },
 
@@ -23,11 +23,11 @@ export const translations = {
       button: "បើកក្នុងកម្មវិធី Telegram",
     },
 
-    // Donation Modal
-    donationModal: {
-      title: "ឧបត្ថម្ភដល់ E-ROBOT",
-      desc: "សូមស្កែន QR Code ខាងក្រោមដើម្បីឧបត្ថម្ភដល់ក្រុមការងារ E-ROBOT",
-      thankYou: "អរគុណសម្រាប់ការគាំទ្រសហគមន៍ E-ROBOT!",
+    // Contribution Modal
+    contributionModal: {
+      title: "ចូលរួមចំណែកជាមួយសហគមន៍ E-ROBOT",
+      desc: "សូមស្កែន QR Code ខាងក្រោម ដើម្បីចូលរួមចំណែកក្នុងសកម្មភាពសហគមន៍ E-ROBOT",
+      thankYou: "អរគុណសម្រាប់ការចូលរួមចំណែកក្នុងសហគមន៍ E-ROBOT!",
       copied: "បានចម្លងលេខគណនី!",
       accountName: "ឈ្មោះគណនី",
       accountNumber: "លេខគណនី",
@@ -232,7 +232,7 @@ export const translations = {
       events: "Activities",
       sharings: "Resources",
       contact: "Contact",
-      donate: "Donate Us",
+      contribute: "Contribute",
       close: "Close",
     },
 
@@ -243,11 +243,11 @@ export const translations = {
       button: "Open in Telegram App",
     },
 
-    // Donation Modal
-    donationModal: {
-      title: "Donate to E-ROBOT",
-      desc: "Please scan the QR Code below to support the E-ROBOT team",
-      thankYou: "Thank you for supporting the E-ROBOT community!",
+    // Contribution Modal
+    contributionModal: {
+      title: "Contribute to the E-ROBOT Community",
+      desc: "Scan the QR code below to make a community contribution to E-ROBOT",
+      thankYou: "Thank you for contributing to the E-ROBOT community!",
       copied: "Account number copied!",
       accountName: "Account Name",
       accountNumber: "Account Number",

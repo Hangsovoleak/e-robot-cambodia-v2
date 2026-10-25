@@ -7,18 +7,18 @@ import { db } from "../firebase";
 import { Globe } from "lucide-react";
 
 import ERobotLogo from "../assets/logo-compact.png";
-import DonationQR from "../assets/QR.jpg"; 
+import ContributionQR from "../assets/QR.jpg"; 
 import TelegramQR from "../assets/telegram_bong_kosal.png";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [donationModalOpen, setDonationModalOpen] = useState(false);
+  const [contributionModalOpen, setContributionModalOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
-  // Donation state
-  const [donateAmount, setDonateAmount] = useState("");
-  const [donateSuccess, setDonateSuccess] = useState(false);
-  const [donating, setDonating] = useState(false);
+  // Contribution state
+  const [contributionAmount, setContributionAmount] = useState("");
+  const [contributionSuccess, setContributionSuccess] = useState(false);
+  const [contributing, setContributing] = useState(false);
 
   const { language, toggleLanguage, t } = useLanguage();
 
@@ -29,13 +29,13 @@ export default function Navbar() {
     { to: "/sharings", label: t.nav.sharings },
   ];
 
-  const donationPanelRef = useRef(null);
+  const contributionPanelRef = useRef(null);
 
   // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (donationPanelRef.current && !donationPanelRef.current.contains(event.target)) {
-        setDonationModalOpen(false);
+      if (contributionPanelRef.current && !contributionPanelRef.current.contains(event.target)) {
+        setContributionModalOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -44,25 +44,25 @@ export default function Navbar() {
 
   const closeAll = () => {
     setMobileMenuOpen(false);
-    setDonationModalOpen(false);
+    setContributionModalOpen(false);
     setContactModalOpen(false);
   };
 
-  const handleConfirmDonation = async () => {
+  const handleConfirmContribution = async () => {
     try {
-      setDonating(true);
+      setContributing(true);
       await addDoc(collection(db, "donations"), {
-        amount: donateAmount || "តាមទឹកចិត្ត",
+        amount: contributionAmount || "តាមទឹកចិត្ត",
         paymentMethod: "ABA Pay QR",
         status: "completed",
         timestamp: serverTimestamp()
       });
-      setDonateSuccess(true);
-      setDonateAmount("");
+      setContributionSuccess(true);
+      setContributionAmount("");
     } catch (err) {
-      console.error("Donation recording error:", err);
+      console.error("Contribution recording error:", err);
     } finally {
-      setDonating(false);
+      setContributing(false);
     }
   };
 
@@ -122,7 +122,7 @@ export default function Navbar() {
             <button
               onClick={() => {
                 setContactModalOpen(true);
-                setDonationModalOpen(false);
+                setContributionModalOpen(false);
               }}
               className="px-3.5 py-2 rounded-sm text-xs font-bold bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
             >
@@ -130,17 +130,17 @@ export default function Navbar() {
               <span>{t.nav.contact}</span>
             </button>
 
-            {/* Donation Button */}
+            {/* Contribution Button */}
             <button
               onClick={() => {
-                setDonateSuccess(false);
-                setDonationModalOpen(!donationModalOpen);
+                setContributionSuccess(false);
+                setContributionModalOpen(!contributionModalOpen);
                 setContactModalOpen(false);
               }}
               className="px-3.5 py-2 rounded-sm text-xs font-bold bg-[#FF383C] hover:bg-[#e02d31] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
             >
               <Heart className="w-3.5 h-3.5 fill-white text-white" />
-              <span>{t.nav.donate}</span>
+              <span>{t.nav.contribute}</span>
             </button>
           </div>
 
@@ -207,23 +207,23 @@ export default function Navbar() {
               </button>
 
               <button 
-                onClick={() => { setMobileMenuOpen(false); setDonationModalOpen(true); }} 
+                onClick={() => { setMobileMenuOpen(false); setContributionModalOpen(true); }} 
                 className="py-3 px-3 bg-[#FF383C] hover:bg-[#e02d31] text-white text-xs font-bold rounded-sm flex items-center justify-center gap-2 cursor-pointer border-none shadow-none transition-colors"
               >
                 <Heart className="w-4 h-4 fill-white text-white shrink-0" />
-                <span className="truncate">{t.nav.donate}</span>
+                <span className="truncate">{t.nav.contribute}</span>
               </button>
             </div>
 
           </div>
         )}
 
-        {/* Donation QR Floating Modal */}
-        {donationModalOpen && (
-          <div className="absolute left-1/2 top-full -translate-x-1/2 mt-2 z-50 w-full max-w-sm px-4" ref={donationPanelRef}>
+        {/* Contribution QR Floating Modal */}
+        {contributionModalOpen && (
+          <div className="absolute left-1/2 top-full -translate-x-1/2 mt-2 z-50 w-full max-w-sm px-4" ref={contributionPanelRef}>
             <div className="bg-white border border-[#192048]/15 rounded-sm p-6 text-center flex flex-col items-center relative shadow-none">
               <button 
-                onClick={() => setDonationModalOpen(false)} 
+                onClick={() => setContributionModalOpen(false)} 
                 className="absolute top-4 right-4 h-7 w-7 rounded-full bg-[#F7F7F7] text-[#192048] flex items-center justify-center font-bold text-xs border-none cursor-pointer hover:bg-[#192048]/10 transition-colors"
               >
                 ✕
@@ -234,42 +234,42 @@ export default function Navbar() {
               </div>
 
               <h3 className="text-base font-bold text-[#192048] m-0">
-                {t.donationModal.title}
+                {t.contributionModal.title}
               </h3>
               <p className="text-xs font-medium text-[#192048]/70 mt-1.5 mb-4 px-2 leading-relaxed">
-                {t.donationModal.desc}
+                {t.contributionModal.desc}
               </p>
 
               <div className="w-52 h-52 bg-[#F7F7F7] border border-[#192048]/10 rounded-sm p-3 flex items-center justify-center overflow-hidden mb-4 shadow-none">
                 <img 
-                  src={DonationQR} 
-                  alt="Donation ABA Pay QR Code" 
+                  src={ContributionQR} 
+                  alt="Contribution ABA Pay QR Code" 
                   className="w-full h-full object-contain rounded-lg" 
                 />
               </div>
 
-              {/* Firestore Donation Recording */}
+              {/* Firestore Contribution Recording */}
               <div className="w-full pt-3 border-t border-[#192048]/10">
-                {donateSuccess ? (
+                {contributionSuccess ? (
                   <div className="p-3 bg-emerald-50 text-emerald-700 text-xs font-bold flex items-center justify-center gap-2 rounded-sm">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>{t.donationModal.thankYou}</span>
+                    <span>{t.contributionModal.thankYou}</span>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2">
                     <input
                       type="text"
                       placeholder={language === "km" ? "ចំនួនប្រាក់ (ឧទាហរណ៍: $5)" : "Amount (e.g. $5)"}
-                      value={donateAmount}
-                      onChange={(e) => setDonateAmount(e.target.value)}
+                      value={contributionAmount}
+                      onChange={(e) => setContributionAmount(e.target.value)}
                       className="w-full px-3.5 py-2 bg-[#F7F7F7] border border-[#192048]/15 rounded-sm text-xs text-[#192048] placeholder-[#192048]/40 focus:outline-none"
                     />
                     <button
-                      onClick={handleConfirmDonation}
-                      disabled={donating}
+                      onClick={handleConfirmContribution}
+                      disabled={contributing}
                       className="w-full py-2 bg-[#192048] hover:bg-[#232b57] text-white text-xs font-bold rounded-sm border-none cursor-pointer transition-colors shadow-none disabled:opacity-50"
                     >
-                      {donating ? (language === "km" ? "កំពុងកត់ត្រា..." : "Recording...") : (language === "km" ? "កត់ត្រាការឧបត្ថម្ភក្នុងប្រព័ន្ធ" : "Record Donation in System")}
+                      {contributing ? (language === "km" ? "កំពុងកត់ត្រា..." : "Recording...") : (language === "km" ? "កត់ត្រាការចូលរួមចំណែករបស់ខ្ញុំ" : "Record My Contribution")}
                     </button>
                   </div>
                 )}
